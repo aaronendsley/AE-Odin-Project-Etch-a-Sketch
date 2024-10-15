@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 712px;
+  height: 712px;
+  margin: auto;
+  background-color: black;
+}
+
+.row {
+  display: flex;
+  flex-grow: 1;
+}
+.square {
+  border: solid white 1px;
+  flex-grow: 1;
+}
