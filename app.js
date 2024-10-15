@@ -25,7 +25,7 @@ function createGrid(rowsAndSquares) {
   const CONTAINER = document.getElementById("container");
 
   //Only allow the user to make 100 rows and 100 Squares in each row
-  if (rowsAndSquares <= 100) {
+  if (rowsAndSquares <= 100 && rowsAndSquares > 1) {
     // Check if the Container Has Children and remove them;
     if (CONTAINER.hasChildNodes) {
       CONTAINER.replaceChildren();
@@ -35,5 +35,6 @@ function createGrid(rowsAndSquares) {
     for (let i = 1; i <= rowsAndSquares; i++) {
       CONTAINER.appendChild(createRow(rowsAndSquares));
     }
+  } else {
   }
 }
