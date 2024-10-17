@@ -39,6 +39,14 @@ function createGrid(rowsAndSquares) {
   }
 }
 
+//generate a random hexidecimal number
+// found the formula for generating the hexidecimal here: https://css-tricks.com/snippets/javascript/random-hex-color/
+function getNewColor() {
+  let newColor = Math.floor(Math.random() * 16777215).toString(16);
+  newColor = `#${newColor}`;
+  return newColor;
+}
+
 document.getElementById("generate-grid").addEventListener("click", function () {
   const GETUSERINPUT = document.getElementById("get-user-input").value;
   const ERRORMESSAGE = document.getElementById("error-message");
