@@ -38,3 +38,20 @@ function createGrid(rowsAndSquares) {
   } else {
   }
 }
+
+document.getElementById("generate-grid").addEventListener("click", function () {
+  const GETUSERINPUT = document.getElementById("get-user-input").value;
+  const ERRORMESSAGE = document.getElementById("error-message");
+  const MESSAGE = document.createElement("p");
+  if (GETUSERINPUT >= 2 && GETUSERINPUT <= 100) {
+    createGrid(GETUSERINPUT);
+    if (ERRORMESSAGE.hasChildNodes) {
+      ERRORMESSAGE.replaceChildren();
+    }
+  } else {
+    MESSAGE.textContent =
+      "Grid values must not be less than 2 or greater than 100";
+    ERRORMESSAGE.replaceChildren();
+    ERRORMESSAGE.appendChild(MESSAGE);
+  }
+});

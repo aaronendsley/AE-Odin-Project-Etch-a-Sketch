@@ -23,6 +23,16 @@
     <!-- 2X2 is a sqaure with four Sqaures-->
     <!--36X36 36 rows with 36 squares inside-->
     <!--100X100 100 rows with 100 squares inside-->
+    <div id="button-container">
+      <div>
+        <label>
+          Grid Size:
+          <input id="get-user-input" type="number" min="2" max="100" />
+        </label>
+        <button id="generate-grid" type="button">Generate Grid</button>
+      </div>
+      <div id="error-message"></div>
+    </div>
     <div id="container"></div>
 
     <script src="app.js"></script>
