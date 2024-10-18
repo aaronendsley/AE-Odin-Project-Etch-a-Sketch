@@ -2,6 +2,13 @@
 function createSquare() {
   const NEWSQUARE = document.createElement("div");
   NEWSQUARE.className = "square";
+
+  //Give the square a color if it does not have a color
+  NEWSQUARE.addEventListener("mouseover", function () {
+    if (!NEWSQUARE.style.backgroundColor) {
+      NEWSQUARE.style.backgroundColor = `${getNewColor()}`;
+    }
+  });
   return NEWSQUARE;
 }
 
@@ -42,6 +49,8 @@ function createGrid(rowsAndSquares) {
 //generate a random hexidecimal number
 // found the formula for generating the hexidecimal here: https://css-tricks.com/snippets/javascript/random-hex-color/
 function getNewColor() {
+  //change generation to this https://gist.github.com/kettuniko/1b72bd4862797f1039c8
+
   let newColor = Math.floor(Math.random() * 16777215).toString(16);
   newColor = `#${newColor}`;
   return newColor;
