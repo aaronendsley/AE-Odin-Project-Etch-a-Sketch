@@ -7,6 +7,16 @@ function createSquare() {
   NEWSQUARE.addEventListener("mouseover", function () {
     if (!NEWSQUARE.style.backgroundColor) {
       NEWSQUARE.style.backgroundColor = `${getNewColor()}`;
+    } else {
+      //get the color and add 10 to the opacity
+      let color = NEWSQUARE.style.backgroundColor.split(",");
+      if (color[3]) {
+        color[0] = color[0].split("(")[1];
+        color[3] = color[3].split(")")[0];
+        color[3] = (Number(color[3]) + 0.1).toFixed(2);
+        color = `rgba(${color.join(",")})`;
+        NEWSQUARE.style.backgroundColor = color;
+      }
     }
   });
   return NEWSQUARE;
@@ -20,7 +30,6 @@ function createRow(NumberOfSquares) {
   //create and append squares
   for (let i = 1; i <= NumberOfSquares; i++) {
     NEWROW.appendChild(createSquare());
-
     if (i >= NumberOfSquares) {
       return NEWROW;
     }
@@ -49,10 +58,18 @@ function createGrid(rowsAndSquares) {
 //generate a random hexidecimal number
 // found the formula for generating the hexidecimal here: https://css-tricks.com/snippets/javascript/random-hex-color/
 function getNewColor() {
-  //change generation to this https://gist.github.com/kettuniko/1b72bd4862797f1039c8
+  //Found this formula here https://gist.github.com/kettuniko/1b72bd4862797f1039c8
+  const RANDOMNUMBER = (min, max) =>
+    Math.floor(Math.random() * (max - min + 1) + min);
+  const RANDOMBYTE = () => RANDOMNUMBER(0, 255);
+  const RANDOMPERCENT = (0.5).toFixed(2);
+  const RANDOMCSSRGBA = () =>
+    `rgba(${[RANDOMBYTE(), RANDOMBYTE(), RANDOMBYTE(), RANDOMPERCENT].join(
+      ","
+    )})`;
 
-  let newColor = Math.floor(Math.random() * 16777215).toString(16);
-  newColor = `#${newColor}`;
+  let newColor = RANDOMCSSRGBA();
+
   return newColor;
 }
 
